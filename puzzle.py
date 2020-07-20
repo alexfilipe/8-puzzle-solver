@@ -69,8 +69,12 @@ class IllegalMoveException(Exception):
 class Puzzle:
     """Represents an 8-puzzle."""
 
-    def __init__(self, puzzle_matrix=PUZZLE_GOAL, puzzle_str=None):
+    def __init__(self,
+                 puzzle_matrix=PUZZLE_GOAL,
+                 puzzle_str=None,
+                 last_move=None):
         self.matrix = puzzle_matrix
+        self.last_move = last_move
 
         if puzzle_str:
             self.matrix = str_to_matrix(puzzle_str)

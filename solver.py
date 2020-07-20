@@ -1,4 +1,4 @@
-"""search.py -- Implements informed search strategy for 8-puzzle solution
+"""solver.py -- Implements informed search strategy for 8-puzzle solution
 
 Author: Álex Filipe Santos
 Date: 19 July 2020
@@ -12,8 +12,12 @@ STANDARD_COST = 1
 
 class PuzzleNode:
     """Represents a node in the search graph."""
-    def __init__(self, puzzle,
-                 parent=None, cost=0, cumulative_cost=0, heuristic=1):
+    def __init__(self,
+                 puzzle,
+                 parent=None,
+                 cost=0,
+                 cumulative_cost=0,
+                 heuristic=1):
         self.puzzle = puzzle
 
         # Pointer to the parent puzzle.
@@ -49,13 +53,14 @@ class PuzzleNode:
 
 
     def next_moves(self):
-        """Returns a list of possible next moves."""
+        """Expands the current node, returning a list of next possible moves."""
         possible_moves = self.puzzle.allowed_moves
         nodes = []
 
         for move in possible_moves:
             child_puzzle = deepcopy(self.puzzle)
             child_puzzle.move(move)
+            child_puzzle.last_move = move
 
             cumulative_cost = self.cumulative_cost + STANDARD_COST
 
@@ -97,9 +102,9 @@ class PuzzleSolver:
     def find_solution(self):
         """Returns a list of steps to reach the solution."""
         steps = []
-        solution = self.search_solution()
+        solution, cost = self.search_solution()
 
-        if solution is False:
+        if solution is None:
             raise NotSolvableException("Failed to find a solution.")
 
         node = solution
@@ -109,7 +114,11 @@ class PuzzleSolver:
 
         steps.reverse()
 
-        return steps
+        return {
+            "steps": steps,
+            "depth": len(steps),
+            "cost": cost
+        }
 
 
     def search_solution(self):
@@ -126,11 +135,14 @@ class PuzzleSolver:
         # rich comparison operators.
         frontier.put(self.tree_root)
 
+        # Number of nodes generated
+        search_cost = 1
+
         while not frontier.empty():
             next_node = frontier.get()
 
             if next_node.puzzle.is_solved():
-                return next_node
+                return next_node, search_cost
 
             explored.add(next_node.puzzle.string)
 
@@ -140,7 +152,8 @@ class PuzzleSolver:
                 # Add node to the frontier
                 if moved_node.puzzle.string not in explored:
                     frontier.put(moved_node)
+                    search_cost += 1
 
         # Failed to find a solution
         if frontier.empty():
-            return False
+            return None, search_cost
