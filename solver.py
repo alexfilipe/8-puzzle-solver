@@ -108,7 +108,7 @@ class PuzzleSolver:
             raise NotSolvableException("Failed to find a solution.")
 
         node = solution
-        while node.parent is not None:
+        while node is not None:
             steps.append(node.puzzle)
             node = node.parent
 

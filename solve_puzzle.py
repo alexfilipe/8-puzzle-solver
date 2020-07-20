@@ -53,6 +53,10 @@ if __name__ == '__main__':
         if input_mode == 1:
             puzzle = generate_solvable_puzzle()
 
+            # Display puzzle
+            print("\nPuzzle:")
+            print(puzzle)
+
         # Input Puzzle
         elif input_mode == 2:
             print("\nType in your puzzle in 3 lines:")
@@ -69,11 +73,6 @@ if __name__ == '__main__':
         else:
             print("Invalid option")
             continue
-
-
-        # Display puzzle
-        print("\nPuzzle:")
-        print(puzzle)
 
         if not puzzle.is_solvable():
             print("\nPuzzle is not solvable. Please try again")

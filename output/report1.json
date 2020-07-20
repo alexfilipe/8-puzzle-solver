@@ -1,0 +1,58 @@
+[
+    {
+        "depth": 8,
+        "stats": {
+            "cases_tested": 10,
+            "total_cost_h1": 326,
+            "total_cost_h2": 200,
+            "average_cost_h1": 32.6,
+            "average_cost_h2": 20.0,
+            "total_time_h1": 0.03137946128845215,
+            "total_time_h2": 0.01608443260192871,
+            "average_time_h1": 0.003137946128845215,
+            "average_time_h2": 0.0016084432601928711
+        }
+    },
+    {
+        "depth": 12,
+        "stats": {
+            "cases_tested": 10,
+            "total_cost_h1": 1332,
+            "total_cost_h2": 444,
+            "average_cost_h1": 133.2,
+            "average_cost_h2": 44.4,
+            "total_time_h1": 0.12619757652282715,
+            "total_time_h2": 0.04463481903076172,
+            "average_time_h1": 0.012619757652282714,
+            "average_time_h2": 0.004463481903076172
+        }
+    },
+    {
+        "depth": 16,
+        "stats": {
+            "cases_tested": 10,
+            "total_cost_h1": 6363,
+            "total_cost_h2": 939,
+            "average_cost_h1": 636.3,
+            "average_cost_h2": 93.9,
+            "total_time_h1": 0.5877387523651123,
+            "total_time_h2": 0.08518195152282715,
+            "average_time_h1": 0.05877387523651123,
+            "average_time_h2": 0.008518195152282715
+        }
+    },
+    {
+        "depth": 20,
+        "stats": {
+            "cases_tested": 10,
+            "total_cost_h1": 38535,
+            "total_cost_h2": 3246,
+            "average_cost_h1": 3853.5,
+            "average_cost_h2": 324.6,
+            "total_time_h1": 3.8399839401245117,
+            "total_time_h2": 0.29982781410217285,
+            "average_time_h1": 0.38399839401245117,
+            "average_time_h2": 0.029982781410217284
+        }
+    }
+]

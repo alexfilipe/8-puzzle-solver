@@ -1,0 +1,110 @@
+CS 4200 Project 1
+8-Puzzle Solver
+--------------------------
+
+Select option:
+[1] Solve random puzzle
+[2] Solve puzzle from input
+[3] Exit
+2
+
+Type in your puzzle in 3 lines:
+1 8 7
+3 0 2
+6 4 5
+
+Puzzle:
+1 8 7
+3 0 2
+6 4 5
+
+Select heuristic to solve:
+[1] h1 = Number of Misplaced Tiles
+[2] h2 = Manhattan Distance
+2
+
+Solution Found
+
+Initial state:
+1 8 7
+3 2 0
+6 4 5
+
+Step #1: move down
+1 8 0
+3 2 7
+6 4 5
+
+Step #2: move right
+1 0 8
+3 2 7
+6 4 5
+
+Step #3: move up
+1 2 8
+3 0 7
+6 4 5
+
+Step #4: move up
+1 2 8
+3 4 7
+6 0 5
+
+Step #5: move left
+1 2 8
+3 4 7
+6 5 0
+
+Step #6: move down
+1 2 8
+3 4 0
+6 5 7
+
+Step #7: move down
+1 2 0
+3 4 8
+6 5 7
+
+Step #8: move right
+1 0 2
+3 4 8
+6 5 7
+
+Step #9: move up
+1 4 2
+3 0 8
+6 5 7
+
+Step #10: move up
+1 4 2
+3 5 8
+6 0 7
+
+Step #11: move left
+1 4 2
+3 5 8
+6 7 0
+
+Step #12: move down
+1 4 2
+3 5 0
+6 7 8
+
+Step #13: move right
+1 4 2
+3 0 5
+6 7 8
+
+Step #14: move down
+1 0 2
+3 4 5
+6 7 8
+
+Step #15: move right
+0 1 2
+3 4 5
+6 7 8
+
+Search Cost for heuristic h2: 238 nodes
+Search Time: 0.0272 seconds
+--------------------------

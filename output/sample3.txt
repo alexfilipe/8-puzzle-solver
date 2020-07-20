@@ -1,0 +1,130 @@
+CS 4200 Project 1
+8-Puzzle Solver
+--------------------------
+
+Select option:
+[1] Solve random puzzle
+[2] Solve puzzle from input
+[3] Exit
+2
+
+Type in your puzzle in 3 lines:
+5 4 1
+7 6 3
+8 2 0
+
+Puzzle:
+5 4 1
+7 6 3
+8 2 0
+
+Select heuristic to solve:
+[1] h1 = Number of Misplaced Tiles
+[2] h2 = Manhattan Distance
+2
+
+Solution Found
+
+Initial state:
+5 4 1
+7 6 3
+8 0 2
+
+Step #1: move right
+5 4 1
+7 6 3
+0 8 2
+
+Step #2: move down
+5 4 1
+0 6 3
+7 8 2
+
+Step #3: move left
+5 4 1
+6 0 3
+7 8 2
+
+Step #4: move left
+5 4 1
+6 3 0
+7 8 2
+
+Step #5: move up
+5 4 1
+6 3 2
+7 8 0
+
+Step #6: move right
+5 4 1
+6 3 2
+7 0 8
+
+Step #7: move right
+5 4 1
+6 3 2
+0 7 8
+
+Step #8: move down
+5 4 1
+0 3 2
+6 7 8
+
+Step #9: move down
+0 4 1
+5 3 2
+6 7 8
+
+Step #10: move left
+4 0 1
+5 3 2
+6 7 8
+
+Step #11: move up
+4 3 1
+5 0 2
+6 7 8
+
+Step #12: move right
+4 3 1
+0 5 2
+6 7 8
+
+Step #13: move down
+0 3 1
+4 5 2
+6 7 8
+
+Step #14: move left
+3 0 1
+4 5 2
+6 7 8
+
+Step #15: move left
+3 1 0
+4 5 2
+6 7 8
+
+Step #16: move up
+3 1 2
+4 5 0
+6 7 8
+
+Step #17: move right
+3 1 2
+4 0 5
+6 7 8
+
+Step #18: move right
+3 1 2
+0 4 5
+6 7 8
+
+Step #19: move down
+0 1 2
+3 4 5
+6 7 8
+
+Search Cost for heuristic h2: 204 nodes
+Search Time: 0.0245 seconds
+--------------------------
