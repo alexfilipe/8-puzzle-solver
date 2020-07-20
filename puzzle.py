@@ -73,7 +73,11 @@ class Puzzle:
                  puzzle_matrix=PUZZLE_GOAL,
                  puzzle_str=None,
                  last_move=None):
+
+        # The state of the puzzle stored as a matrix.
         self.matrix = puzzle_matrix
+
+        # The last move made to reach this puzzle state.
         self.last_move = last_move
 
         if puzzle_str:
@@ -84,25 +88,29 @@ class Puzzle:
 
     def __update_state(self):
         """Refreshes the state of the puzzle after updating its matrix
-        (allowed moves, string representation, zero index, etc.)"""
+        (allowed moves, string representation, zero index, etc.)
+        """
         self.string = matrix_to_str(self.matrix)
         self.zero_index = self.__zero_index()
         self.allowed_moves = self.__allowed_moves()
 
 
     def __str__(self):
-        """Pretty-print representation of the puzzle."""
+        """Pretty-print representation of the puzzle.
+        """
         return "\n".join(
             " ".join(str(s) for s in r)
             for r in self.matrix
         )
 
     def __hash__(self):
-        """Hash representation of the puzzle (for dicts and sets)."""
+        """Hash representation of the puzzle (for dicts and sets).
+        """
         return hash(self.string)
 
     def __eq__(self, other):
-        """Compares two puzzles."""
+        """Compares two puzzles.
+        """
         if not isinstance(other, type(self)):
             return NotImplementedError
 
@@ -110,13 +118,17 @@ class Puzzle:
 
 
     def is_solved(self):
-        """Returns True if this puzzle is solved."""
+        """Returns True if this puzzle is solved.
+        """
         return self.string == PUZZLE_GOAL_STR
 
     def is_solvable(self):
-        """Returns True if the current puzzle is solvable."""
+        """Returns True if the current puzzle is solvable.
+        """
         inversions = 0
 
+        # Counts the number of inversions (the number of times that a tile with
+        # higher value comes before a tile with lower value).
         for i in range(8):
             for j in range(i + 1, 9):
                 fst = int(self.string[i])
@@ -128,7 +140,9 @@ class Puzzle:
         return inversions % 2 == 0
 
     def misplaced_heuristic(self):
-        """Calculates the heuristic for number of misplaced tiles."""
+        """Calculates the heuristic for number of misplaced tiles (the total for
+        all tiles).
+        """
 
         # The tile is in the correct place if string[i] = i
         misplaced = 0
@@ -141,7 +155,9 @@ class Puzzle:
         return misplaced
 
     def manhattan_heuristic(self):
-        """Calculates the heuristic for Manhattan distance."""
+        """Calculates the heuristic for Manhattan distance (the total distance)
+        for all misplaced tiles.
+        """
         total_distance = 0
 
         for i1 in range(3):
@@ -165,7 +181,8 @@ class Puzzle:
 
 
     def __zero_index(self):
-        """Returns (i, j) representing the index of the zero element."""
+        """Returns (i, j) representing the index of the zero element.
+        """
         i, j = 0, 0
 
         while i < 3 and j < 3 and self.matrix[i][j] != 0:
@@ -179,7 +196,8 @@ class Puzzle:
         return i, j
 
     def __allowed_moves(self):
-        """Returns a set of allowed moves for the current puzzle."""
+        """Returns a set of allowed moves for the current puzzle.
+        """
         moves = set(["up", "right", "down", "left"])
         i, j = self.__zero_index()
 
@@ -195,7 +213,12 @@ class Puzzle:
         return moves
 
     def move(self, direction):
-        """Moves the puzzle in certain direction."""
+        """Moves the puzzle in certain direction, if the move is legal
+
+        Args:
+            direction (str): One of the possible directions (up, right, down
+            or left).
+        """
         if direction not in self.allowed_moves:
             raise IllegalMoveException
 
@@ -210,8 +233,12 @@ class Puzzle:
         elif direction == "left":
             self.__move_left(i, j)
 
+        self.last_move = direction
+
         self.__update_state()
 
+    # The following moves include two arguments i, j representing the position
+    # of the zero tile.
     def __move_up(self, i, j):
         self.matrix[i][j] = self.matrix[i+1][j]
         self.matrix[i+1][j] = 0

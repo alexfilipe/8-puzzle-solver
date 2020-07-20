@@ -13,11 +13,6 @@ Type in your puzzle in 3 lines:
 7 6 3
 8 2 0
 
-Puzzle:
-5 4 1
-7 6 3
-8 2 0
-
 Select heuristic to solve:
 [1] h1 = Number of Misplaced Tiles
 [2] h2 = Manhattan Distance
@@ -28,103 +23,109 @@ Solution Found
 Initial state:
 5 4 1
 7 6 3
-8 0 2
+8 2 0
 
 Step #1: move right
 5 4 1
 7 6 3
+8 0 2
+
+Step #2: move right
+5 4 1
+7 6 3
 0 8 2
 
-Step #2: move down
+Step #3: move down
 5 4 1
 0 6 3
 7 8 2
 
-Step #3: move left
+Step #4: move left
 5 4 1
 6 0 3
 7 8 2
 
-Step #4: move left
+Step #5: move left
 5 4 1
 6 3 0
 7 8 2
 
-Step #5: move up
+Step #6: move up
 5 4 1
 6 3 2
 7 8 0
 
-Step #6: move right
+Step #7: move right
 5 4 1
 6 3 2
 7 0 8
 
-Step #7: move right
+Step #8: move right
 5 4 1
 6 3 2
 0 7 8
 
-Step #8: move down
+Step #9: move down
 5 4 1
 0 3 2
 6 7 8
 
-Step #9: move down
+Step #10: move down
 0 4 1
 5 3 2
 6 7 8
 
-Step #10: move left
+Step #11: move left
 4 0 1
 5 3 2
 6 7 8
 
-Step #11: move up
+Step #12: move up
 4 3 1
 5 0 2
 6 7 8
 
-Step #12: move right
+Step #13: move right
 4 3 1
 0 5 2
 6 7 8
 
-Step #13: move down
+Step #14: move down
 0 3 1
 4 5 2
 6 7 8
 
-Step #14: move left
+Step #15: move left
 3 0 1
 4 5 2
 6 7 8
 
-Step #15: move left
+Step #16: move left
 3 1 0
 4 5 2
 6 7 8
 
-Step #16: move up
+Step #17: move up
 3 1 2
 4 5 0
 6 7 8
 
-Step #17: move right
+Step #18: move right
 3 1 2
 4 0 5
 6 7 8
 
-Step #18: move right
+Step #19: move right
 3 1 2
 0 4 5
 6 7 8
 
-Step #19: move down
+Step #20: move down
 0 1 2
 3 4 5
 6 7 8
 
-Search Cost for heuristic h2: 204 nodes
-Search Time: 0.0245 seconds
+Solution Depth: 20
+Search Cost for heuristic h2: 271 nodes
+Search Time: 0.0334 seconds
 --------------------------

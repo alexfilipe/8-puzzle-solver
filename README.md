@@ -1,7 +1,10 @@
 # 8-Puzzle Solver
 
 This project implements a solver for the 8-Puzzle Problem using the A* search
-algorithm, enabling use two different heuristics.
+algorithm, enabling use of two different heuristics.
+
+The heuristic #2 implementation is able to find solutions of great depth (number
+ of steps) -- e.g. 23 steps -- very quickly.
 
 The objective of the 8-Puzzle Problem is to find a step-by-step solution to a
 puzzle with 8 numbers, where the only movements allowed are single permutations
@@ -39,8 +42,10 @@ line of the format (for instance):
 After the puzzle is displayed, it is possible to choose between two search
 heuristics to implement in the A* search:
 
+```
 h1 = Number of Misplaced Tiles
 h2 = Manhattan Distance
+```
 
 The program then outputs (if the puzzle is a solvable puzzle) each step to solve
 the puzzle.
@@ -63,6 +68,8 @@ the original place they should be.
 
 
 ## Output Example
+
+More outputs (of greater depth) are found in `/output`.
 
 ```
 CS 4200 Project 1
@@ -117,6 +124,7 @@ Step #4: move right
 3 4 5
 6 7 8
 
+Solution Depth: 4
 Search Cost for heuristic h2: 10 nodes
 Search Time: 0.0017 seconds
 --------------------------

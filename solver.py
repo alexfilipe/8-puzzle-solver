@@ -11,7 +11,8 @@ from puzzle import Puzzle, NotSolvableException
 STANDARD_COST = 1
 
 class PuzzleNode:
-    """Represents a node in the search graph."""
+    """Represents a node in the search graph.
+    """
     def __init__(self,
                  puzzle,
                  parent=None,
@@ -53,14 +54,18 @@ class PuzzleNode:
 
 
     def next_moves(self):
-        """Expands the current node, returning a list of next possible moves."""
+        """Expands the current node, returning a list of next possible moves.
+
+        Returns:
+            list of obj:`Puzzle`: a list of all next state puzzles that have
+                allowed moves.
+        """
         possible_moves = self.puzzle.allowed_moves
         nodes = []
 
         for move in possible_moves:
             child_puzzle = deepcopy(self.puzzle)
             child_puzzle.move(move)
-            child_puzzle.last_move = move
 
             cumulative_cost = self.cumulative_cost + STANDARD_COST
 
@@ -75,7 +80,16 @@ class PuzzleNode:
         return nodes
 
     def _evaluation(self, heuristic=1):
-        """Evaluation function for the node."""
+        """Evaluation function for the node.
+
+        Args:
+            heuristic (int): The search heuristic to use.
+                1 = represents the misplaced tiles heuristic
+                2 = represents the Manhattan distance heuristic
+
+        Returns:
+            int: the search heuristic result.
+        """
         h = 0
 
         # Misplaced heuristic
@@ -90,7 +104,8 @@ class PuzzleNode:
 
 
 class PuzzleSolver:
-    """Represents a puzzle tree with informed search method to find the goal."""
+    """Represents a puzzle tree with informed search method to find the goal.
+    """
     def __init__(self, puzzle, heuristic=1):
         if not puzzle.is_solvable():
             raise NotSolvableException("The puzzle provided is not solvable.")
@@ -100,13 +115,20 @@ class PuzzleSolver:
 
 
     def find_solution(self):
-        """Returns a list of steps to reach the solution."""
+        """Returns a list of steps to reach the solution, including some
+        statistics (depth of solution and cost of solution - number of node
+        expansions needed).
+
+        Returns:
+            dict: statistics
+        """
         steps = []
         solution, cost = self.search_solution()
 
         if solution is None:
             raise NotSolvableException("Failed to find a solution.")
 
+        # Finds all previous node states.
         node = solution
         while node is not None:
             steps.append(node.puzzle)
@@ -116,13 +138,18 @@ class PuzzleSolver:
 
         return {
             "steps": steps,
-            "depth": len(steps),
+            "depth": len(steps) - 1,
             "cost": cost
         }
 
 
     def search_solution(self):
-        """Runs the A* search algorithm to find a solution."""
+        """Runs the A* search algorithm to find a solution.
+
+        Returns:
+            obj:`PuzzleNode`: the node representing the solution in the tree.
+            int: the total cost to reach the solution.
+        """
 
         # Priority queue of best cost nodes
         frontier = PriorityQueue()

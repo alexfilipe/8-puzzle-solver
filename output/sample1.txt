@@ -13,11 +13,6 @@ Type in your puzzle in 3 lines:
 6 3 2
 0 7 8
 
-Puzzle:
-1 5 4
-6 3 2
-0 7 8
-
 Select heuristic to solve:
 [1] h1 = Number of Misplaced Tiles
 [2] h2 = Manhattan Distance
@@ -27,44 +22,50 @@ Solution Found
 
 Initial state:
 1 5 4
+6 3 2
+0 7 8
+
+Step #1: move down
+1 5 4
 0 3 2
 6 7 8
 
-Step #1: move left
+Step #2: move left
 1 5 4
 3 0 2
 6 7 8
 
-Step #2: move down
+Step #3: move down
 1 0 4
 3 5 2
 6 7 8
 
-Step #3: move left
+Step #4: move left
 1 4 0
 3 5 2
 6 7 8
 
-Step #4: move up
+Step #5: move up
 1 4 2
 3 5 0
 6 7 8
 
-Step #5: move right
+Step #6: move right
 1 4 2
 3 0 5
 6 7 8
 
-Step #6: move down
+Step #7: move down
 1 0 2
 3 4 5
 6 7 8
 
-Step #7: move right
+Step #8: move right
 0 1 2
 3 4 5
 6 7 8
 
+Solution Depth: 8
 Search Cost for heuristic h1: 29 nodes
-Search Time: 0.0041 seconds
+Search Time: 0.0045 seconds
 --------------------------

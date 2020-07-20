@@ -2,7 +2,6 @@
 
 Author: Álex Filipe Santos
 Date: 19 July 2020
-
 """
 import re
 import time
@@ -12,14 +11,22 @@ from solver import PuzzleSolver
 
 
 def generate_random_puzzle():
-    """Generates a random puzzle, which might be solvable or not."""
+    """Generates a random puzzle, which might be solvable or not.
+
+    Returns:
+        obj:`Puzzle`: a puzzle
+    """
     permutation = list("012345678")
     shuffle(permutation)
     puzzle_str = "".join(permutation)
     return Puzzle(puzzle_str=puzzle_str)
 
 def generate_solvable_puzzle():
-    """Generates a solvable random puzzle."""
+    """Generates a solvable random puzzle.
+
+    Returns:
+        obj:`Puzzle`: a solvable puzzle.
+    """
     puzzle = generate_random_puzzle()
 
     while not puzzle.is_solvable():
@@ -28,6 +35,11 @@ def generate_solvable_puzzle():
     return puzzle
 
 def input_to_puzzle(input_str):
+    """Transforms an input string from the CLI into a Puzzle object.
+
+    Returns:
+        obj:`Puzzle`: a puzzle
+    """
     input_str = re.sub(r"[ \n]+", "", input_str)
     return Puzzle(puzzle_str=input_str)
 
@@ -95,6 +107,7 @@ if __name__ == '__main__':
         solver = PuzzleSolver(puzzle, heuristic=heuristic)
 
         try:
+            # Tries to find solution and records running time
             start_time = time.time()
             solution = solver.find_solution()
             end_time = time.time()
@@ -111,6 +124,7 @@ if __name__ == '__main__':
                     print(step)
 
             print()
+            print("Solution Depth: {}".format(solution["depth"]))
             print("Search Cost for heuristic h{}: {} nodes"
                   .format(heuristic, solution["cost"]))
             print("Search Time: {0:.4f} seconds".format(solve_time))
